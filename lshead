@@ -1,0 +1,13 @@
+#! /bin/bash
+# lshead - this command lists the first few lines of every file in a directory specified in the argument
+# Emaz Khan 12/11/2018
+
+#If the file exists and input is not empty then carry on
+if [[ -e $2 ]] && [[ -n $# ]]; then
+
+echo "Successful"
+
+head -$1 $2
+else
+	echo "File does not exist"
+fi

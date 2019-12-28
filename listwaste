@@ -1,0 +1,6 @@
+#! /bin/bash
+# listwaste - This simple command shows all the file names and file size in bytes that are stored in the .waste file 
+# Emaz Khan 12/11/2018 
+
+#Lists the files in the .waste folder alongside its size in bytes
+ls -l $HOME/.waste | awk '{print $9, $5}'

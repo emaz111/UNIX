@@ -1,0 +1,29 @@
+letter_Count = 0
+number_Count = 0
+other_Count = 0
+
+INPUT sentence “Enter a string: ”
+
+LOOP through string character by character
+
+WHILE read char DO
+WHILE sentence does NOT = * DO
+
+IF char = letters THEN
+	letter_Count + 1
+ELIF char = numbers THEN
+	number_Count + 1
+ELSE
+	symbol_Count + 1
+END IF
+BREAK
+END WHILE
+OUTPUT “”
+OUTPUT “Amount of numbers in the sentence”
+OUTPUT letter_Count
+OUTPUT “Amount of letters in the sentence”
+OUTPUT number_Count
+OUTPUT “Amount of symbols in the sentence”
+OUTPUT symbol_Count
+END WHILE
+

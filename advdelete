@@ -1,0 +1,28 @@
+#! /bin/bash
+# advdelete - The script will go through a directory and find files older than a day or minutes based on the users choice
+# and it will delete the file once found, i have created a test area directory to prevent deletion of my work
+# Emaz khan 29/11/2018
+
+read -p "Enter day or d OR minute or min or m: " time_Response
+
+time_Response=${time_Response,,}
+
+#while the input is not empty then carry out the following procedure
+while [[ -n $time_Response ]]; do
+#if the user input day or d then files will be found that are day or days old and deleted
+if [[ $time_Response == "day" ]] || [[ $time_Response == "d" ]]; then
+read -p "Enter a number days to find files older than the given number: " digit_Response
+	find $HOME/bin/testarea -mtime +$digit_Response -type f -exec mv {} $HOME/bin/.trash \;
+	echo "Complete"
+#otherwise if the input is minute etc, then files will be found that are minutes old and deleted
+elif [[ $time_Response == "minute" ]] || [[ $time_Response == "min" ]] || [[ $time_Response == "m" ]]; then
+	read -p "Enter a number in minutes to find files older than the given number: " digit_Response
+	find $HOME/bin/testarea -mmin +$digit_Response -type f -exec mv {} $HOME/bin/.trash \; 
+	echo "Complete"
+elif [[ $time_Response =~ ^[0-9]+$  ]]; then
+	echo "Integers are not allowed"
+else
+	echo "Please enter a suitable argument"
+fi
+break
+done

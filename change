@@ -1,0 +1,37 @@
+#! /bin/bash
+# Change - This command will allow the user to change the file permission to either Read, Write,
+# Execute or None by asking for user input
+# Emaz Khan 19/11/18
+
+if [[ -e $1 ]] && [[ -n $1 ]]; then
+
+read -p "Do you want to read, write, execute or all three?" Response
+
+#This makes everything lowercase if its uppercase
+Response=${Response,,}
+
+# The code below contains if statements that decides the output depending on the users input
+# And if the input is anything other than the accepted inputs then it outputs a suitable error
+if [[ $Response == "read" ]] || [[ $Response == "r" ]]; then
+	chmod +r $1
+	echo "File is now Readable"
+elif [[ $Response == "write" ]] || [[ $Response == "w" ]]; then
+	chmod +w $1
+	echo "File is now Writable"
+elif [[ $Response == "execute" ]] || [[ $Response == "x" ]]; then
+	chmod +x $1
+	echo "File is now Executable"
+elif [[ $Response == "all" ]] || [[ $Response == "a" ]]; then
+	chmod 777 $1
+	echo "File is now able to read, write and execute"
+elif [[ -z $Response ]]; then
+	echo "Input is empty"
+elif ! [[ $Response =~ ^[a-zA-Z] ]]; then
+	echo "Enter a valid string"
+else
+	echo "Invalid Input"
+fi
+
+else
+	echo "File does not exist"
+fi

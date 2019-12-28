@@ -1,0 +1,13 @@
+#! /bin/bash
+# chmx - This simple command allows the user to make a file that they typed into the command executable
+# Emaz Khan 12/11/2018
+
+#This makes sure that the file exists and that the input is not empty
+if [[ -e $1 ]] && [[ -n $# ]]; then
+
+echo "File is now excecutable"
+
+chmod +x $1
+else
+	echo "File does not exist"
+fi

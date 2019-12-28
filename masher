@@ -1,0 +1,35 @@
+#! /bin/bash
+# masher - This script loops through each 
+# Emaz khan 07/12/2018 
+
+#These variables will store either letter, number or symbol
+letter_Count=0
+number_Count=0
+other_Count=0
+
+#Asks for user input
+read -p "Enter a string: " sentence
+#Below code goes through the sentence letter by letter
+echo $sentence | awk -v ORS="" '{ gsub(/./,"&\n") ; print}' | \
+
+while read char
+do
+while [ $sentence != "*" ]
+do
+if [[ $char =~ ^[a-zA-Z] ]]; then 
+	$((letter_Count++))
+elif [[ $char =~ ^[0-9]+$ ]]; then
+	$((number_Count++))
+else
+	$((other_Count++))
+fi
+break
+done
+echo ""
+echo "Amount of numbers in the sentence"
+echo $number_Count
+echo "Amount of letters in the sentence"
+echo $letter_Count
+echo "Amount of symbols in the sentence"
+echo $other_Count
+done

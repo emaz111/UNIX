@@ -1,0 +1,6 @@
+#! /bin/bash
+# Waste Size - This command allows the user to check the size of each file that is stored in the .waste file which is where all the deleted files are kept
+# Emaz Khan 12/11/18
+
+#Finds the number of files in the .waste folder
+find $HOME/.waste -type f | wc -l
